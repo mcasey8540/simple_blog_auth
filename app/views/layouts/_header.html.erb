@@ -1,7 +1,12 @@
-<h1>Simple Blog</h1>     
-<div class="row"> 
+<h1>Simple Blog</h1>
+<div class="row">
   <div class="span4 offset8">
     <span class="pull-right">
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path %>
+    <% end %>
       <%= link_to 'New Article', new_article_path, class: 'btn' %>
     </span>
   </div>

@@ -4,9 +4,9 @@
     <p>
       <%= raw truncate(article.body, length: 200, separator: '...') %>
       <br>
-      <%= link_to 'Show', article %> | 
-      <%= link_to 'Edit', edit_article_path(article) %> | 
-      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Show', article if can? :show, Article %>
+      <%= link_to 'Edit', edit_article_path(article) if can? :edit, Article %>
+      <%= link_to 'Destroy', article if can? :delete, Article, method: :delete, data: { confirm: 'Are you sure?' } %>
     </p>
   </div>
 <% end %>

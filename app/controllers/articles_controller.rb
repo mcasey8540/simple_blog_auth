@@ -47,8 +47,8 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { render @article, notice: 'Article was successfully created.' }
-        format.json { render json: @article, status: :created, location: @article }
+        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.json { redirect_to json: @article, status: :created, location: @article }
       else
         format.html { render action: "new" }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { render @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
